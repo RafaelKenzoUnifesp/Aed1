@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+int main() {
+    int n; // Número de matrizes na entrada
+    scanf("%d", &n);
+
+    for (int instancia = 1; instancia <= n; instancia++) {
+        int matriz[9][9], somaLinha[9] = {0}, somaColuna[9] = {0}, somaMatriz[3][3] = {0};
+
+        // Leitura da matriz
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                scanf("%d", &matriz[i][j]);
+            }
+        }
+
+        // Cálculo das somas das linhas, colunas e submatrizes
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                int temp = matriz[i][j];
+                somaLinha[i] += temp;
+                somaColuna[j] += temp;
+                somaMatriz[i / 3][j / 3] += temp;
+            }
+        }
+
+        // Verificação se é solução válida
+        int solucao = 1;
+        for (int i = 0; i < 9; i++) {
+            if (somaLinha[i] != 45 || somaColuna[i] != 45) {
+                solucao = 0;
+                break;
+            }
+        }
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (somaMatriz[i][j] != 45) {
+                    solucao = 0;
+                    break;
+                }
+            }
+            if (!solucao) break;
+        }
+
+        // Saída
+        printf("Instancia %d\n", instancia);
+        printf("%s\n\n", (solucao ? "SIM" : "NAO"));
+    }
+
+    return 0;
+}
