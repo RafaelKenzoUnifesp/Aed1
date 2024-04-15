@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <string.h>
+
+// Definição de uma estrutura chamada string para armazenar uma string de até 200 caracteres
+typedef struct {
+    char s1[200];
+} string;
+
+// Declaração de três arrays:
+// - palavra: armazena uma string de até 10050 caracteres
+// - texto: array de estruturas string para armazenar as palavras do texto de entrada
+// - palavras: array de estruturas string para armazenar as palavras que serão procuradas no texto
+char palavra[10050];
+string texto[10050];
+string palavras[200];
+
+// Definição de macros para valores booleanos
+#define true 1
+#define false 0
+
+int main(int argc, char **argv) {
+    // Declaração de variáveis
+    char tmp[10050], *aux;
+    unsigned n, i, j, k;
+
+    // Leitura da linha de texto de entrada
+    scanf(" %[^\n]", tmp);
+    // Leitura do número de palavras a serem procuradas no texto
+    scanf("%*c%u", &n);
+
+    // Loop para ler as palavras que serão procuradas no texto
+    for (i = 0; i < n; ++i)
+        scanf("%s", palavras[i].s1);
+
+    // Divisão do texto de entrada em palavras e armazenamento no array texto
+    i = 0;
+    aux = strtok(tmp, " ");
+    strcpy(texto[i++].s1, aux);
+
+    do {
+        aux = strtok(0, " ");
+        if (aux)
+            strcpy(texto[i++].s1, aux);
+    } while (aux);
+
+    // Loop para cada palavra procurada
+    for (k = 0; k < n; ++k) {
+        unsigned tam = 0;
+        _Bool flag = true;
+
+        // Loop para percorrer o texto e encontrar a posição de cada ocorrência da palavra
+        for (j = 0; j < i; ++j) {
+            if (strcmp(texto[j].s1, palavras[k].s1) == 0)
+                if (!flag)
+                    printf(" %u", tam);
+                else
+                    printf("%u", tam), flag = false;
+
+            tam += strlen(texto[j].s1) + 1;
+        }
+
+        // Se a palavra não foi encontrada no texto, imprime -1
+        if (flag)
+            printf("-1\n");
+        else
+            printf("\n");
+    }
+
+    return 0;
+}
