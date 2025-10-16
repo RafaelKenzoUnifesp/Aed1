@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1746392572 source:c:\users\lenovo\desktop\dasid\interpretador stack machine\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

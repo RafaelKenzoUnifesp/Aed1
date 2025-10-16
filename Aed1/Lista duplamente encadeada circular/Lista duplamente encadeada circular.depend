@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1748544233 source:c:\users\lenovo\desktop\dasid\lista duplamente encadeada circular\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

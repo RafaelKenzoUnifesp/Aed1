@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1687813752 source:c:\users\lenovo\desktop\ifood\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<string.h>
+

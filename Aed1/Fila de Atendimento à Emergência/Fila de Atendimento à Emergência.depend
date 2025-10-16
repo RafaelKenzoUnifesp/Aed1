@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1747090046 source:c:\users\lenovo\desktop\dasid\fila de atendimento à emergência\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
